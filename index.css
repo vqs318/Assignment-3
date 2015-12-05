@@ -1,0 +1,25 @@
+.center-block {
+    float: none;
+}
+
+.graph-block {
+    /*Makes it create a scrollbar on small screens*/
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+svg line, svg path, svg text{
+	stroke: white;
+	color: white;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: bold;
+	text-align: center;
+}
