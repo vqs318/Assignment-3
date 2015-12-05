@@ -3,8 +3,8 @@ var PCA=[];
 d3.csv("first.txt", function(data){
 	PCA = data.map(function(d) {return [+d.x, +d.y];});
 
-	var w=1000;
-	var h=600;
+	var w=500;
+	var h=500;
 	var margin = {top: 20, right: 20, bottom: 50, left: 100};
 
 	var x = d3.scale.linear().range([0, w]);
@@ -45,7 +45,6 @@ d3.csv("first.txt", function(data){
 			return y(d[1]);
 		})
 		.attr("r",8)
-		.style("fill","#DF691A")
 	  	.append("svg:title")
 	   	.text(function(d) { return d[0] + ', ' + d[1]; });
 

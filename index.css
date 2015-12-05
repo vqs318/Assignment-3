@@ -14,9 +14,10 @@
   shape-rendering: crispEdges;
 }
 
-svg line, svg path, svg text{
+svg *{
 	stroke: white;
 	color: white;
+  fill: #DF691A;
 }
 
 h1, h2, h3, h4, h5, h6{

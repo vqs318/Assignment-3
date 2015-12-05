@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/http-server",
-    "build": "node_modules/.bin/webpack src/stacked_bar.js stacked_bar.js",
-    "watch": "node_modules/.bin/webpack src/stacked_bar.js stacked_bar.js --watch"
+    "build": "node_modules/.bin/webpack src/hand.js hand.js",
+    "watch": "node_modules/.bin/webpack src/hand.js hand.js --watch"
   },
   "repository": {
     "type": "git",
