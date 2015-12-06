@@ -117,8 +117,14 @@
 	
 		svg.append("g").attr("class", "y axis").call(yAxis);
 	
+		//Axis labels
+		svg.append("text").style('text-anchor', 'middle').attr("x", dimensions.w / 2).attr("y", dimensions.h + margins.top + margins.bottom / 2).text("Position (x)");
+	
+		svg.append("text").style('text-anchor', 'middle').attr("y", -margins.left / 2).attr("x", -dimensions.h / 2).attr("transform", 'rotate(270)').html("Position(y)");
+	
 		var dataGroup = svg.append('g');
 	
+		//Function to change the current hand
 		window.updateHand = function updateHand(hand) {
 	
 			var path = dataGroup.selectAll('path').data([hands[hand]]);
@@ -142,7 +148,21 @@
 			}).attr("r", 3);
 		};
 	
+		//Start on hand 1(0)
 		updateHand(0);
+	
+		//Remove all special formatting from all points
+		function clearDataConnect() {
+			d3.selectAll('.pca-point circle').attr('r', 8).style('fill', null);
+		}
+	
+		//On hovering the observations, change the points
+		d3.selectAll(".data-connect").data([0, 1, 2]).on('click', function (d) {
+			clearDataConnect();
+	
+			//Emphasise the selected points
+			d3.selectAll('.data-connected-' + d).style('fill', '#5BC0DE').attr('r', 12);
+		});
 	});
 
 /***/ }

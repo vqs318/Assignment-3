@@ -12,6 +12,17 @@ d3.csv("first.txt", function(data){
 	var h=500;
 	var margin = {top: 20, right: 20, bottom: 50, left: 100};
 
+	//For illustration the observations (- michael)
+	var observations = {
+		"4": 0,
+		"5": 0,
+		"6": 0,
+		"31": 1,
+		"36": 1,
+		"38": 2,
+		"40": 2
+	};
+
 	var x = d3.scale.linear().range([0, w]);
 		x.domain([
 			d3.min(PCA, function(d) { return d[0]; }),
@@ -37,7 +48,11 @@ d3.csv("first.txt", function(data){
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-	svg.selectAll("circle")
+	svg
+		//Group the circles
+		.append('g')
+		.attr('class', 'pca-point')	
+		.selectAll("circle")
 		.data(PCA)
 		.enter()
 		.append("circle")
@@ -51,6 +66,11 @@ d3.csv("first.txt", function(data){
 			return y(d[1]);
 		})
 		.attr("r",8)
+		.attr("class", function(d, i){
+			if ((i + 1) in observations)
+				return "data-connected-" + observations[i+1];
+			return "";
+		})
 	  	.on('mouseover', function(d, hand){
    			updateHand(hand);
 	   	})
