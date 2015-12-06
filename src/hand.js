@@ -24,7 +24,7 @@ d3.text("hands.csv", function(text){
 	};
 
 	//Variables
-	let currentHand = 0;
+	// let currentHand = 2;
 
 	//Scales
 	const x = d3.scale.linear().range([0, dimensions.w]);
@@ -71,21 +71,40 @@ d3.text("hands.csv", function(text){
 	.attr("class", "y axis")
 	.call(yAxis);
 
-	update();
+	let dataGroup =  svg.append('g');
 
-	function update(){
+	window.updateHand = function updateHand(hand){
 
-		svg.append("path")
-		.datum(hands[currentHand])
-		.attr("d", line)
+		let path = dataGroup
+		.selectAll('path')
+		.data([hands[hand]]);
 
-		svg.selectAll('circle')
-		.data(hands[currentHand])
+		path.enter()
+		.append('path');
+
+		path
+		.transition()
+		.attr("d", line);
+
+		path.exit().remove();
+
+		let dots = dataGroup.selectAll('circle')
+		.data(hands[hand]);
+
+		dots
 		.enter()
-		.append('circle')
+		.append('circle');
+
+		dots
+		.exit()
+		.remove();
+
+		dots.transition()
 		.attr('cx', d => x(d[0]))
 		.attr('cy', d => y(d[1]))
 		.attr("r",3);
 	}
 
+	updateHand(0);
+	
 });

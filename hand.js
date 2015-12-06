@@ -72,7 +72,7 @@
 		};
 	
 		//Variables
-		var currentHand = 0;
+		// let currentHand = 2;
 	
 		//Scales
 		var x = d3.scale.linear().range([0, dimensions.w]);
@@ -117,18 +117,32 @@
 	
 		svg.append("g").attr("class", "y axis").call(yAxis);
 	
-		update();
+		var dataGroup = svg.append('g');
 	
-		function update() {
+		window.updateHand = function updateHand(hand) {
 	
-			svg.append("path").datum(hands[currentHand]).attr("d", line);
+			var path = dataGroup.selectAll('path').data([hands[hand]]);
 	
-			svg.selectAll('circle').data(hands[currentHand]).enter().append('circle').attr('cx', function (d) {
+			path.enter().append('path');
+	
+			path.transition().attr("d", line);
+	
+			path.exit().remove();
+	
+			var dots = dataGroup.selectAll('circle').data(hands[hand]);
+	
+			dots.enter().append('circle');
+	
+			dots.exit().remove();
+	
+			dots.transition().attr('cx', function (d) {
 				return x(d[0]);
 			}).attr('cy', function (d) {
 				return y(d[1]);
 			}).attr("r", 3);
-		}
+		};
+	
+		updateHand(0);
 	});
 
 /***/ }

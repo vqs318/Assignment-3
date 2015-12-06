@@ -45,8 +45,12 @@ d3.csv("first.txt", function(data){
 			return y(d[1]);
 		})
 		.attr("r",8)
+	  	.on('mouseover', function(d, hand){
+   			updateHand(hand);
+	   	})
 	  	.append("svg:title")
-	   	.text(function(d) { return d[0] + ', ' + d[1]; });
+	   	.text(function(d) { return d[0] + ', ' + d[1]; })
+
 
 	// svg.append("path")
 	//       .datum(PCA)
