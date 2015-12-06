@@ -1,7 +1,12 @@
 var PCA=[];
 
 d3.csv("first.txt", function(data){
-	PCA = data.map(function(d) {return [+d.x, +d.y];});
+	PCA = data.map(function(d) {return [+d.x, +d.y];})
+
+	// d3.csv("first.txt")
+	// 	.row(function(d) { return {key: d.key, value: +d.value}})
+	// 	//.get(function(error, rows));
+		
 
 	var w=500;
 	var h=500;
@@ -37,11 +42,12 @@ d3.csv("first.txt", function(data){
 		.enter()
 		.append("circle")
 		.attr("cx",function(d){
-			console.log(x(d[0]))
+			//console.log(x(d[0]))
 			return x(d[0]);
 		})
 		.attr("cy",function(d){
-			console.log(y(d[1]))
+			console.log(d)
+			//console.log(y(d[1]))
 			return y(d[1]);
 		})
 		.attr("r",8)
@@ -49,7 +55,8 @@ d3.csv("first.txt", function(data){
    			updateHand(hand);
 	   	})
 	  	.append("svg:title")
-	   	.text(function(d) { return d[0] + ', ' + d[1]; })
+	   	.text(function(d,i) { return d[0] + ', ' + d[1] + '\n' + "This data point is at row index of " + (i+1); })
+	  	
 
 
 	// svg.append("path")
