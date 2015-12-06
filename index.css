@@ -28,3 +28,17 @@ h1, h2, h3, h4, h5, h6{
 .data-connect{
   cursor: pointer;
 }
+
+circle.active{
+  fill: #5CB85C;
+  transform: scale(1.5);
+}
+
+circle.clicked{
+  /*stroke: #5BC0DE;*/
+  stroke-width: 3px;
+}
+
+.pca-point circle{
+  transition: transform 1s;
+}

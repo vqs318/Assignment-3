@@ -151,17 +151,13 @@
 		//Start on hand 1(0)
 		updateHand(0);
 	
-		//Remove all special formatting from all points
-		function clearDataConnect() {
-			d3.selectAll('.pca-point circle').attr('r', 8).style('fill', null);
-		}
-	
 		//On hovering the observations, change the points
 		d3.selectAll(".data-connect").data([0, 1, 2]).on('click', function (d) {
-			clearDataConnect();
+			//Remove all special formatting from all points
+			d3.selectAll('.pca-point circle').classed('active', false);
 	
 			//Emphasise the selected points
-			d3.selectAll('.data-connected-' + d).style('fill', '#5BC0DE').attr('r', 12);
+			d3.selectAll('.data-connected-' + d).classed('active', true);
 		});
 	});
 
