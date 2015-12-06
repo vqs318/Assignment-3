@@ -81,13 +81,13 @@ d3.csv("first.txt", function(data){
 	    .style('text-anchor', 'middle')
 	    .attr("x", w/2)
 	    .attr("y", h + margin.top + margin.bottom/2)
-	    .text("Year");
+	    .text("First Principal Component");
 
     svg.append("text")
 	    .style('text-anchor', 'middle')
 	    .attr("y", -margin.left/2)
 	    .attr("x", -h/2)
 	    .attr("transform", 'rotate(270)')
-	    .html("Average Monthly secavgerature, (&#176;C)");
+	    .html("Second Principal Component");
 
 });
