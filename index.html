@@ -25,14 +25,14 @@
         <div id="pca" class="center-block graph-block" style="width:1000px"></div>
     </section>
 </div>
-<div class="col-md-12">
+<div class="list-group center-block" style='width: 60%'>
     <h3 class="text-center">Introduction</h3>
     <p>Presented here are two graphs.  The right graph shows 40 data points.  The left graph shows a series of x and y coordinates derived from the outline of a hand.   Each data point on the right graph represents the first and second prinicpal component of one of 40 different hands.</p>
     <h3 class="text-center">Methods</h3>
     <p>The visualizations are easy to use.  Simply hovering over one of the data point on the right graph will update the left graph with the hand that cooresponds to that data point.</p>
     <h3 class="text-center">Results</h3>
     <p>Observations (hover over each observation to visualise it above):</p>
-    <div class="list-group center-block" style='width: 60%'>
+
         <a class="data-connect list-group-item" data-connect="1">One observation to make is that there is no coorelation between the index value of a hand and it"s position on the graph.  For instance, the hand created with the points at index value of 5, does not necessarily look similar or is positioned simlar to the hand of index value 4 or 6.</a>   
 
         <a class="data-connect list-group-item" data-connect="2">Another observation can be made regarding the size of the various hands.  As the points move from left to right in the PCA graph, the thickness and length of the hands increases.</a>   
@@ -41,13 +41,15 @@
         <a class="data-connect list-group-item" data-connect="3">A final observation is that there appear to be a couple of PCA outliers, the topmost and the bottommost points.  The hands that are associated with these point have fingers that are positioned significantly different than the others.  While most of the hands are positioned in a somewhat neutral resting state, the two outlier hands have some fingers close together and other farther apart.  </a>
 
     </ul>
+
     <h3 class="text-center">Conclusion</h3>
-    <p></p>
+    <p>First, the observation that there is no coorelation between hand indexes means that the 40 rows of 112 dimensions are not in a specific order.  It also means that it is not possible to pick a specific hand without knowing it's PCA plot at first, because the plots are not in a specific order. The second observation can be concluded by saying that hands that were bigger or longer had the most variance in the first variable which is represented on the x-axis.  Lastly, the final conclusion is that hands that were at rest when the outline points were taken have a closer variance level to each other than hands that were positioned in an unnatural manner.  This is shown by the topmost and bottommost PCA points, but also by observing how the hand changes when traveling among the point outwards in. </p>
+
     <h3 class="text-center">Individual Part</h3>
     <p>Katareena: "Display the datafile row index as a text-label or a tooltip when the mouse hovers over its point in the PCA panel."</p>
     <p>Michael: Connect a piece of text in the discussion with the visualization.</p>
+    </div>
 
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.js"></script>
 <script src="plot.js"></script>
